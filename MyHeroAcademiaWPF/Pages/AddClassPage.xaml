@@ -1,0 +1,75 @@
+﻿<Page x:Class="MyHeroAcademiaWPF.Pages.AddClassPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyHeroAcademiaWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1400"
+      Title="AddClassPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="189*"/>
+            <RowDefinition Height="506*"/>
+            <RowDefinition Height="75*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="414*"/>
+            <ColumnDefinition Width="512*"/>
+            <ColumnDefinition Width="414*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock Text="Название класса:" Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="16" VerticalAlignment="Center" />
+            <TextBox x:Name="ClassName" Style="{StaticResource MaterialDesignFilledTextBox}" Height="53" FontSize="16" Width="150"/>
+        </StackPanel>
+
+        <StackPanel  Grid.Row="1" Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <StackPanel  Orientation="Horizontal">
+                <TextBlock Text="Количество учеников:" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="16"/>
+                <TextBox x:Name="NumOfStudentTextBox" Style="{StaticResource MaterialDesignFilledTextBox}" Text="25" KeyUp="NumOfStudentTextBoxKeyUp" Height="53" FontSize="16" Width="70"/>
+
+                <Button Content="Сгенерировать" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="167" Height="53" Margin="10,0,0,10" Click="GenerateClassClick"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="63" Width="248">
+            <TextBlock Text="Добавить класс"  Style="{StaticResource MaterialDesignHeadline1TextBlock}" FontSize="32"  Height="43" Width="228"/>
+        </StackPanel>
+
+        <ListBox x:Name="ListStudents" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" ScrollViewer.CanContentScroll="True">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="4"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Image.ImageFile}" Width="100" Height="100"></Image>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                                <ListBox ItemsSource="{Binding StudentSuperpower}" SelectionChanged="StudentSuperpowerListBoxSelectionChanged"></ListBox>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="Ранг:"/>
+                                <TextBlock Text="{Binding Rank.Value}"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center" Height="53">
+            <Button Content="Назад" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="100" Height="53" Click="BackBtnClick"/>
+            <Button Content="Добавить" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="132" Margin="10,0,0,0" Height="53" Click="AddClassClick" />
+        </StackPanel>
+    </Grid>
+</Page>

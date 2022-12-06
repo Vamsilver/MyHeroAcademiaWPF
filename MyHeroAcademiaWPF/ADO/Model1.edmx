@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyHeroAcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="IdClass" />
+          </Key>
+          <Property Name="IdClass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdRank" Type="int" Nullable="false" />
+          <Property Name="IdPotential" Type="int" Nullable="false" />
+          <Property Name="AttackPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="ProtectionPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SearchPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupplyForce" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FinalPower">
+          <Key>
+            <PropertyRef Name="IdFinalPower" />
+          </Key>
+          <Property Name="IdFinalPower" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AttackPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="ProtectionPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SearchPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupplyForce" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="IdSuperpower" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="IdImage" />
+          </Key>
+          <Property Name="IdImage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageFile" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Potential">
+          <Key>
+            <PropertyRef Name="IdPotential" />
+          </Key>
+          <Property Name="IdPotential" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PowerAcquisitionType">
+          <Key>
+            <PropertyRef Name="IdPowerAcquisitionType" />
+          </Key>
+          <Property Name="IdPowerAcquisitionType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PowerQualityType">
+          <Key>
+            <PropertyRef Name="IdPowerQualityType" />
+          </Key>
+          <Property Name="IdPowerQualityType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PowerType">
+          <Key>
+            <PropertyRef Name="IdPowerType" />
+          </Key>
+          <Property Name="IdPowerType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rank">
+          <Key>
+            <PropertyRef Name="IdRank" />
+          </Key>
+          <Property Name="IdRank" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MinAveragePower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="MaxAveragePower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+          </Key>
+          <Property Name="IdStudent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdImage" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdClass" Type="int" Nullable="false" />
+          <Property Name="IdRank" Type="int" Nullable="false" />
+          <Property Name="AttackPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="ProtectionPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SearchPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupplyForce" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentSuperpower">
+          <Key>
+            <PropertyRef Name="IdStudentSuperpower" />
+          </Key>
+          <Property Name="IdStudentSuperpower" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdStudent" Type="int" Nullable="false" />
+          <Property Name="IdSuperpower" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Superpower">
+          <Key>
+            <PropertyRef Name="IdSuperpower" />
+          </Key>
+          <Property Name="IdSuperpower" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdPowerType" Type="int" Nullable="false" />
+          <Property Name="AttackPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="ProtectionPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SearchPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportPower" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupplyForce" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="IdRank" Type="int" Nullable="false" />
+          <Property Name="IdPowerQualityType" Type="int" Nullable="false" />
+          <Property Name="IdPowerAcquisitionType" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Class_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="IdPotential" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="IdPotential" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="IdRank" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="IdRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinalPower_Superpower">
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="1" />
+          <End Role="FinalPower" Type="Self.FinalPower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Superpower">
+              <PropertyRef Name="IdSuperpower" />
+            </Principal>
+            <Dependent Role="FinalPower">
+              <PropertyRef Name="IdSuperpower" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="IdClass" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="IdImage" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="IdRank" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSuperpower_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentSuperpower" Type="Self.StudentSuperpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="IdStudent" />
+            </Principal>
+            <Dependent Role="StudentSuperpower">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSuperpower_Superpower">
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="1" />
+          <End Role="StudentSuperpower" Type="Self.StudentSuperpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Superpower">
+              <PropertyRef Name="IdSuperpower" />
+            </Principal>
+            <Dependent Role="StudentSuperpower">
+              <PropertyRef Name="IdSuperpower" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Superpower_PowerAcquisitionType">
+          <End Role="PowerAcquisitionType" Type="Self.PowerAcquisitionType" Multiplicity="1" />
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PowerAcquisitionType">
+              <PropertyRef Name="IdPowerAcquisitionType" />
+            </Principal>
+            <Dependent Role="Superpower">
+              <PropertyRef Name="IdPowerAcquisitionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Superpower_PowerQualityType">
+          <End Role="PowerQualityType" Type="Self.PowerQualityType" Multiplicity="1" />
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PowerQualityType">
+              <PropertyRef Name="IdPowerQualityType" />
+            </Principal>
+            <Dependent Role="Superpower">
+              <PropertyRef Name="IdPowerQualityType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Superpower_PowerType">
+          <End Role="PowerType" Type="Self.PowerType" Multiplicity="1" />
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PowerType">
+              <PropertyRef Name="IdPowerType" />
+            </Principal>
+            <Dependent Role="Superpower">
+              <PropertyRef Name="IdPowerType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Superpower_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="IdRank" />
+            </Principal>
+            <Dependent Role="Superpower">
+              <PropertyRef Name="IdRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyHeroAcademiaModelStoreContainer">
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinalPower" EntityType="Self.FinalPower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Potential" EntityType="Self.Potential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PowerAcquisitionType" EntityType="Self.PowerAcquisitionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PowerQualityType" EntityType="Self.PowerQualityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PowerType" EntityType="Self.PowerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rank" EntityType="Self.Rank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentSuperpower" EntityType="Self.StudentSuperpower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Superpower" EntityType="Self.Superpower" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Class_Potential" Association="Self.FK_Class_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Rank" Association="Self.FK_Class_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinalPower_Superpower" Association="Self.FK_FinalPower_Superpower">
+            <End Role="Superpower" EntitySet="Superpower" />
+            <End Role="FinalPower" EntitySet="FinalPower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Class" Association="Self.FK_Student_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Image" Association="Self.FK_Student_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Rank" Association="Self.FK_Student_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSuperpower_Student" Association="Self.FK_StudentSuperpower_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentSuperpower" EntitySet="StudentSuperpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSuperpower_Superpower" Association="Self.FK_StudentSuperpower_Superpower">
+            <End Role="Superpower" EntitySet="Superpower" />
+            <End Role="StudentSuperpower" EntitySet="StudentSuperpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Superpower_PowerAcquisitionType" Association="Self.FK_Superpower_PowerAcquisitionType">
+            <End Role="PowerAcquisitionType" EntitySet="PowerAcquisitionType" />
+            <End Role="Superpower" EntitySet="Superpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Superpower_PowerQualityType" Association="Self.FK_Superpower_PowerQualityType">
+            <End Role="PowerQualityType" EntitySet="PowerQualityType" />
+            <End Role="Superpower" EntitySet="Superpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Superpower_PowerType" Association="Self.FK_Superpower_PowerType">
+            <End Role="PowerType" EntitySet="PowerType" />
+            <End Role="Superpower" EntitySet="Superpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Superpower_Rank" Association="Self.FK_Superpower_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Superpower" EntitySet="Superpower" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyHeroAcademiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="IdClass" />
+          </Key>
+          <Property Name="IdClass" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRank" Type="Int32" Nullable="false" />
+          <Property Name="IdPotential" Type="Int32" Nullable="false" />
+          <Property Name="AttackPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="ProtectionPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SearchPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupplyForce" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Potential" Relationship="Self.FK_Class_Potential" FromRole="Class" ToRole="Potential" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_Class_Rank" FromRole="Class" ToRole="Rank" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_Class" FromRole="Class" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="IdImage" />
+          </Key>
+          <Property Name="IdImage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_Image" FromRole="Image" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Potential">
+          <Key>
+            <PropertyRef Name="IdPotential" />
+          </Key>
+          <Property Name="IdPotential" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Class_Potential" FromRole="Potential" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="PowerAcquisitionType">
+          <Key>
+            <PropertyRef Name="IdPowerAcquisitionType" />
+          </Key>
+          <Property Name="IdPowerAcquisitionType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Superpower" Relationship="Self.FK_Superpower_PowerAcquisitionType" FromRole="PowerAcquisitionType" ToRole="Superpower" />
+        </EntityType>
+        <EntityType Name="PowerQualityType">
+          <Key>
+            <PropertyRef Name="IdPowerQualityType" />
+          </Key>
+          <Property Name="IdPowerQualityType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Superpower" Relationship="Self.FK_Superpower_PowerQualityType" FromRole="PowerQualityType" ToRole="Superpower" />
+        </EntityType>
+        <EntityType Name="PowerType">
+          <Key>
+            <PropertyRef Name="IdPowerType" />
+          </Key>
+          <Property Name="IdPowerType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Superpower" Relationship="Self.FK_Superpower_PowerType" FromRole="PowerType" ToRole="Superpower" />
+        </EntityType>
+        <EntityType Name="Rank">
+          <Key>
+            <PropertyRef Name="IdRank" />
+          </Key>
+          <Property Name="IdRank" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MinAveragePower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="MaxAveragePower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Class_Rank" FromRole="Rank" ToRole="Class" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_Rank" FromRole="Rank" ToRole="Student" />
+          <NavigationProperty Name="Superpower" Relationship="Self.FK_Superpower_Rank" FromRole="Rank" ToRole="Superpower" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+          </Key>
+          <Property Name="IdStudent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdImage" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdClass" Type="Int32" Nullable="false" />
+          <Property Name="IdRank" Type="Int32" Nullable="false" />
+          <Property Name="AttackPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="ProtectionPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SearchPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupplyForce" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Student_Class" FromRole="Student" ToRole="Class" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_Student_Image" FromRole="Student" ToRole="Image" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_Student_Rank" FromRole="Student" ToRole="Rank" />
+          <NavigationProperty Name="StudentSuperpower" Relationship="Self.FK_StudentSuperpower_Student" FromRole="Student" ToRole="StudentSuperpower" />
+        </EntityType>
+        <EntityType Name="StudentSuperpower">
+          <Key>
+            <PropertyRef Name="IdStudentSuperpower" />
+          </Key>
+          <Property Name="IdStudentSuperpower" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdStudent" Type="Int32" Nullable="false" />
+          <Property Name="IdSuperpower" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentSuperpower_Student" FromRole="StudentSuperpower" ToRole="Student" />
+          <NavigationProperty Name="Superpower" Relationship="Self.FK_StudentSuperpower_Superpower" FromRole="StudentSuperpower" ToRole="Superpower" />
+        </EntityType>
+        <EntityType Name="Superpower">
+          <Key>
+            <PropertyRef Name="IdSuperpower" />
+          </Key>
+          <Property Name="IdSuperpower" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdPowerType" Type="Int32" Nullable="false" />
+          <Property Name="AttackPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="ProtectionPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SearchPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportPower" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupplyForce" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="IdRank" Type="Int32" Nullable="false" />
+          <Property Name="IdPowerQualityType" Type="Int32" Nullable="false" />
+          <Property Name="IdPowerAcquisitionType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PowerAcquisitionType" Relationship="Self.FK_Superpower_PowerAcquisitionType" FromRole="Superpower" ToRole="PowerAcquisitionType" />
+          <NavigationProperty Name="PowerQualityType" Relationship="Self.FK_Superpower_PowerQualityType" FromRole="Superpower" ToRole="PowerQualityType" />
+          <NavigationProperty Name="PowerType" Relationship="Self.FK_Superpower_PowerType" FromRole="Superpower" ToRole="PowerType" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_Superpower_Rank" FromRole="Superpower" ToRole="Rank" />
+          <NavigationProperty Name="StudentSuperpower" Relationship="Self.FK_StudentSuperpower_Superpower" FromRole="Superpower" ToRole="StudentSuperpower" />
+          <NavigationProperty Name="FinalPower" Relationship="MyHeroAcademiaModel.FK_FinalPower_Superpower" FromRole="Superpower" ToRole="FinalPower" />
+        </EntityType>
+        <Association Name="FK_Class_Potential">
+          <End Role="Potential" Type="Self.Potential" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potential">
+              <PropertyRef Name="IdPotential" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="IdPotential" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="IdRank" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="IdRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="IdClass" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="IdImage" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Superpower_PowerAcquisitionType">
+          <End Role="PowerAcquisitionType" Type="Self.PowerAcquisitionType" Multiplicity="1" />
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PowerAcquisitionType">
+              <PropertyRef Name="IdPowerAcquisitionType" />
+            </Principal>
+            <Dependent Role="Superpower">
+              <PropertyRef Name="IdPowerAcquisitionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Superpower_PowerQualityType">
+          <End Role="PowerQualityType" Type="Self.PowerQualityType" Multiplicity="1" />
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PowerQualityType">
+              <PropertyRef Name="IdPowerQualityType" />
+            </Principal>
+            <Dependent Role="Superpower">
+              <PropertyRef Name="IdPowerQualityType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Superpower_PowerType">
+          <End Role="PowerType" Type="Self.PowerType" Multiplicity="1" />
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PowerType">
+              <PropertyRef Name="IdPowerType" />
+            </Principal>
+            <Dependent Role="Superpower">
+              <PropertyRef Name="IdPowerType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="IdRank" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Superpower_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="IdRank" />
+            </Principal>
+            <Dependent Role="Superpower">
+              <PropertyRef Name="IdRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSuperpower_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentSuperpower" Type="Self.StudentSuperpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="IdStudent" />
+            </Principal>
+            <Dependent Role="StudentSuperpower">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSuperpower_Superpower">
+          <End Role="Superpower" Type="Self.Superpower" Multiplicity="1" />
+          <End Role="StudentSuperpower" Type="Self.StudentSuperpower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Superpower">
+              <PropertyRef Name="IdSuperpower" />
+            </Principal>
+            <Dependent Role="StudentSuperpower">
+              <PropertyRef Name="IdSuperpower" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyHeroAcademiaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Class" EntityType="Self.Class" />
+          <EntitySet Name="Image" EntityType="Self.Image" />
+          <EntitySet Name="Potential" EntityType="Self.Potential" />
+          <EntitySet Name="PowerAcquisitionType" EntityType="Self.PowerAcquisitionType" />
+          <EntitySet Name="PowerQualityType" EntityType="Self.PowerQualityType" />
+          <EntitySet Name="PowerType" EntityType="Self.PowerType" />
+          <EntitySet Name="Rank" EntityType="Self.Rank" />
+          <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="StudentSuperpower" EntityType="Self.StudentSuperpower" />
+          <EntitySet Name="Superpower" EntityType="Self.Superpower" />
+          <AssociationSet Name="FK_Class_Potential" Association="Self.FK_Class_Potential">
+            <End Role="Potential" EntitySet="Potential" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Rank" Association="Self.FK_Class_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Class" Association="Self.FK_Student_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Image" Association="Self.FK_Student_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Superpower_PowerAcquisitionType" Association="Self.FK_Superpower_PowerAcquisitionType">
+            <End Role="PowerAcquisitionType" EntitySet="PowerAcquisitionType" />
+            <End Role="Superpower" EntitySet="Superpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Superpower_PowerQualityType" Association="Self.FK_Superpower_PowerQualityType">
+            <End Role="PowerQualityType" EntitySet="PowerQualityType" />
+            <End Role="Superpower" EntitySet="Superpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Superpower_PowerType" Association="Self.FK_Superpower_PowerType">
+            <End Role="PowerType" EntitySet="PowerType" />
+            <End Role="Superpower" EntitySet="Superpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Rank" Association="Self.FK_Student_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Superpower_Rank" Association="Self.FK_Superpower_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Superpower" EntitySet="Superpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSuperpower_Student" Association="Self.FK_StudentSuperpower_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentSuperpower" EntitySet="StudentSuperpower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSuperpower_Superpower" Association="Self.FK_StudentSuperpower_Superpower">
+            <End Role="Superpower" EntitySet="Superpower" />
+            <End Role="StudentSuperpower" EntitySet="StudentSuperpower" />
+          </AssociationSet>
+          <EntitySet Name="FinalPower" EntityType="MyHeroAcademiaModel.FinalPower" />
+          <AssociationSet Name="FK_FinalPower_Superpower" Association="MyHeroAcademiaModel.FK_FinalPower_Superpower">
+            <End Role="Superpower" EntitySet="Superpower" />
+            <End Role="FinalPower" EntitySet="FinalPower" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FinalPower">
+          <Key>
+            <PropertyRef Name="IdFinalPower" />
+          </Key>
+          <Property Name="IdFinalPower" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttackPower" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="ProtectionPower" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="SearchPower" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="SupportPower" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="SupplyForce" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="IdSuperpower" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Superpower" Relationship="MyHeroAcademiaModel.FK_FinalPower_Superpower" FromRole="FinalPower" ToRole="Superpower" />
+        </EntityType>
+        <Association Name="FK_FinalPower_Superpower">
+          <End Type="MyHeroAcademiaModel.Superpower" Role="Superpower" Multiplicity="1" />
+          <End Type="MyHeroAcademiaModel.FinalPower" Role="FinalPower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Superpower">
+              <PropertyRef Name="IdSuperpower" />
+            </Principal>
+            <Dependent Role="FinalPower">
+              <PropertyRef Name="IdSuperpower" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyHeroAcademiaModelStoreContainer" CdmEntityContainer="MyHeroAcademiaEntities">
+          <EntitySetMapping Name="Class">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="IdClass" ColumnName="IdClass" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdRank" ColumnName="IdRank" />
+                <ScalarProperty Name="IdPotential" ColumnName="IdPotential" />
+                <ScalarProperty Name="AttackPower" ColumnName="AttackPower" />
+                <ScalarProperty Name="ProtectionPower" ColumnName="ProtectionPower" />
+                <ScalarProperty Name="SearchPower" ColumnName="SearchPower" />
+                <ScalarProperty Name="SupportPower" ColumnName="SupportPower" />
+                <ScalarProperty Name="SupplyForce" ColumnName="SupplyForce" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Image">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="IdImage" ColumnName="IdImage" />
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Potential">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.Potential">
+              <MappingFragment StoreEntitySet="Potential">
+                <ScalarProperty Name="IdPotential" ColumnName="IdPotential" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PowerAcquisitionType">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.PowerAcquisitionType">
+              <MappingFragment StoreEntitySet="PowerAcquisitionType">
+                <ScalarProperty Name="IdPowerAcquisitionType" ColumnName="IdPowerAcquisitionType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PowerQualityType">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.PowerQualityType">
+              <MappingFragment StoreEntitySet="PowerQualityType">
+                <ScalarProperty Name="IdPowerQualityType" ColumnName="IdPowerQualityType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PowerType">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.PowerType">
+              <MappingFragment StoreEntitySet="PowerType">
+                <ScalarProperty Name="IdPowerType" ColumnName="IdPowerType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rank">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.Rank">
+              <MappingFragment StoreEntitySet="Rank">
+                <ScalarProperty Name="IdRank" ColumnName="IdRank" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="MinAveragePower" ColumnName="MinAveragePower" />
+                <ScalarProperty Name="MaxAveragePower" ColumnName="MaxAveragePower" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="IdImage" ColumnName="IdImage" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdClass" ColumnName="IdClass" />
+                <ScalarProperty Name="IdRank" ColumnName="IdRank" />
+                <ScalarProperty Name="AttackPower" ColumnName="AttackPower" />
+                <ScalarProperty Name="ProtectionPower" ColumnName="ProtectionPower" />
+                <ScalarProperty Name="SearchPower" ColumnName="SearchPower" />
+                <ScalarProperty Name="SupportPower" ColumnName="SupportPower" />
+                <ScalarProperty Name="SupplyForce" ColumnName="SupplyForce" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentSuperpower">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.StudentSuperpower">
+              <MappingFragment StoreEntitySet="StudentSuperpower">
+                <ScalarProperty Name="IdStudentSuperpower" ColumnName="IdStudentSuperpower" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="IdSuperpower" ColumnName="IdSuperpower" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Superpower">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.Superpower">
+              <MappingFragment StoreEntitySet="Superpower">
+                <ScalarProperty Name="IdSuperpower" ColumnName="IdSuperpower" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdPowerType" ColumnName="IdPowerType" />
+                <ScalarProperty Name="AttackPower" ColumnName="AttackPower" />
+                <ScalarProperty Name="ProtectionPower" ColumnName="ProtectionPower" />
+                <ScalarProperty Name="SearchPower" ColumnName="SearchPower" />
+                <ScalarProperty Name="SupportPower" ColumnName="SupportPower" />
+                <ScalarProperty Name="SupplyForce" ColumnName="SupplyForce" />
+                <ScalarProperty Name="IdRank" ColumnName="IdRank" />
+                <ScalarProperty Name="IdPowerQualityType" ColumnName="IdPowerQualityType" />
+                <ScalarProperty Name="IdPowerAcquisitionType" ColumnName="IdPowerAcquisitionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinalPower">
+            <EntityTypeMapping TypeName="MyHeroAcademiaModel.FinalPower">
+              <MappingFragment StoreEntitySet="FinalPower">
+                <ScalarProperty Name="IdSuperpower" ColumnName="IdSuperpower" />
+                <ScalarProperty Name="SupplyForce" ColumnName="SupplyForce" />
+                <ScalarProperty Name="SupportPower" ColumnName="SupportPower" />
+                <ScalarProperty Name="SearchPower" ColumnName="SearchPower" />
+                <ScalarProperty Name="ProtectionPower" ColumnName="ProtectionPower" />
+                <ScalarProperty Name="AttackPower" ColumnName="AttackPower" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdFinalPower" ColumnName="IdFinalPower" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
